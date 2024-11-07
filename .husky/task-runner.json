@@ -1,0 +1,37 @@
+{
+  "tasks": [
+    {
+      "name": "Run CSharpier (-config)",
+      "group": "pre-commit",
+      "command": "dotnet",
+      "args": [
+        "csharpier-config",
+        "${staged}"
+      ],
+      "include": [
+        "**/*.cs",
+        "**/*.csx"
+      ]
+    },
+    {
+      "name": "Build solution",
+      "group": "pre-push",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "--no-restore",
+        "--nologo"
+      ]
+    },
+    {
+      "name": "Run tests",
+      "group": "pre-push",
+      "command": "dotnet",
+      "args": [
+        "test",
+        "--no-build",
+        "--nologo"
+      ]
+    }
+  ]
+}
